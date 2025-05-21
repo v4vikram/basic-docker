@@ -1,18 +1,17 @@
-# Use Node.js base image
 FROM node:18
 
 # Set working directory
 WORKDIR /app
 
-# Copy files
-COPY package.json ./
-COPY index.js ./
-
-# Install dependencies (none in this example)
+# Copy package files and install dependencies
+COPY package*.json ./
 RUN npm install
 
-# Expose port
+# Copy the rest of the code
+COPY . .
+
+# Expose the port
 EXPOSE 3000
 
-# Start the server
-CMD ["npm", "start"]
+# Start in dev mode with nodemon
+CMD ["npm", "run", "dev"]

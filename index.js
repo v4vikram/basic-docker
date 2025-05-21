@@ -1,9 +1,11 @@
-const http = require('http');
+const express = require('express');
+const app = express();
+const PORT = 3000;
 
-const server = http.createServer((req, res) => {
-  res.end('Hello from Docker!');
+app.get('/', (req, res) => {
+  res.send('🚀 Hello from Express running in Docker with Nodemon!');
 });
 
-server.listen(3000, () => {
-  console.log('Server running on port 3000');
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
